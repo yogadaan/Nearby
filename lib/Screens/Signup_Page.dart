@@ -109,7 +109,7 @@ class _SignUpState extends State<SignUp> {
                 child: TextFormField(
                   controller: emailTextEditingController,
                   decoration: InputDecoration(
-                    suffixIcon: Icon(CupertinoIcons.person_fill),
+                    suffixIcon: Icon(Icons.mail),
                     filled: true,
                     fillColor : Color(0xffECF0F5),
                     //border: OutlineInputBorder(borderSide: BorderSide(width: 0,color: Colors.transparent)),
