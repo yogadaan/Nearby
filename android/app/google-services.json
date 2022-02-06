@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "490642666009",
+    "project_id": "nearby-644dc",
+    "storage_bucket": "nearby-644dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490642666009:android:0687ddfaaa184697c33088",
+        "android_client_info": {
+          "package_name": "com.yogdaan.nearby"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490642666009-0b4ql9lf6kes1oothjav9u0loeif9ira.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4L4RmqjVfzBndhyWXVeUUTRmgdh0psvU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490642666009-0b4ql9lf6kes1oothjav9u0loeif9ira.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
