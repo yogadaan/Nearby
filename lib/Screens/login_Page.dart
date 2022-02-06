@@ -39,13 +39,6 @@ class _LoginState extends State<Login> {
           ),
           ElevatedButton(onPressed: () async {
             print('check 1');
-
-            //   if(emailController.text.isEmpty || passwordController.text.isEmpty){
-          //     print('feild is empty');
-          // }
-          // else {
-          //   signIn();
-          //   }
             try{
               final user = await FirebaseAuth.instance.signInWithEmailAndPassword(
                   email: emailController.text,

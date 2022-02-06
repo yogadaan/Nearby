@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/adityarai/StudioProjects/Nearby/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-hu/values-hu.xml",
+            "outputFile": "/Users/adityarai/Desktop/Local Clone/Nearby/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-hu/values-hu.xml",
             "map": [
                 {
                     "source": "/Users/adityarai/.gradle/caches/transforms-2/files-2.1/6627ebe7ef94065a47e7e8e9d66c6a9d/jetified-play-services-base-17.1.0/res/values-hu/values.xml",
