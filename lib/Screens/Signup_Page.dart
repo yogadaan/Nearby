@@ -66,6 +66,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Padding(
           padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
           child: Column(
@@ -75,7 +76,7 @@ class _SignUpState extends State<SignUp> {
 
             children: <Widget>[
               SizedBox(height: 15),
-              Container(child: Image.asset('images/logo.png')),
+              Container(child: Image.asset('image/logo.png')),
               SizedBox(height: 40),
               Container(
                   child: const Text(
