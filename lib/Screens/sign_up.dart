@@ -72,8 +72,8 @@
 //           children: <Widget>[
 //             Text(
 //               'Sign up',
-//               style: GoogleFonts.lato(
-//                 textStyle: TextStyle(
+//               style: GoogleFonts.(
+//                 GoogleFonts.poppins: GoogleFonts.poppins(
 //                   color: Colors.black,
 //                   fontSize: 23,
 //                 ),
@@ -90,8 +90,8 @@
 //                 keyboardType: TextInputType.name,
 //                 decoration: InputDecoration(
 //                   hintText: 'Name',
-//                   hintStyle: GoogleFonts.lato(
-//                     textStyle: TextStyle(
+//                   hintStyle: GoogleFonts.poppins(
+//                     GoogleFonts.poppins: GoogleFonts.poppins(
 //                         fontSize: 12,
 //                         fontWeight: FontWeight.w400,
 //                         color: Colors.grey),
@@ -125,8 +125,8 @@
 //                 keyboardType: TextInputType.emailAddress,
 //                 decoration: InputDecoration(
 //                   hintText: 'Enter your email address',
-//                   hintStyle: GoogleFonts.lato(
-//                     textStyle: TextStyle(
+//                   hintStyle: GoogleFonts.poppins(
+//                     GoogleFonts.poppins: GoogleFonts.poppins(
 //                         fontSize: 12,
 //                         fontWeight: FontWeight.w400,
 //                         color: Colors.grey),
@@ -159,8 +159,8 @@
 //                 cursorColor: Colors.grey,
 //                 decoration: InputDecoration(
 //                   hintText: 'Enter your Password',
-//                   hintStyle: GoogleFonts.lato(
-//                     textStyle: TextStyle(
+//                   hintStyle: GoogleFonts.poppins(
+//                     GoogleFonts.poppins: GoogleFonts.poppins(
 //                         fontSize: 12,
 //                         fontWeight: FontWeight.w400,
 //                         color: Colors.grey),
@@ -213,8 +213,8 @@
 //               },
 //               child: Text(
 //                 'Sign up',
-//                 style: GoogleFonts.lato(
-//                     textStyle: TextStyle(
+//                 style: GoogleFonts.poppins(
+//                     GoogleFonts.poppins: GoogleFonts.poppins(
 //                         fontWeight: FontWeight.w500,
 //                         color: Colors.white,
 //                         fontSize: 17)),
@@ -231,14 +231,14 @@
 //               child: RichText(
 //                 text: TextSpan(
 //                     text: 'Already have an account?',
-//                     style: GoogleFonts.lato(
+//                     style: GoogleFonts.poppins(
 //                         fontWeight: FontWeight.w500,
 //                         fontSize: 14,
 //                         color: Colors.black),
 //                     children: <TextSpan>[
 //                       TextSpan(
 //                         text: ' Login',
-//                         style: GoogleFonts.lato(
+//                         style: GoogleFonts.poppins(
 //                             fontWeight: FontWeight.w700,
 //                             fontSize: 14,
 //                             color: Colors.black),
