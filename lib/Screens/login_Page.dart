@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nearby/Screens/Signup_Page.dart';
 
 import 'homePage.dart';
@@ -30,9 +32,9 @@ class _LoginState extends State<Login> {
               Container(child: Image.asset('image/logo.png')),
               SizedBox(height: 40),
               Container(
-                  child: const Text(
+                  child:  Text(
                     'Hey,\nLogin Now.',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       //color : Color(0xff57559E),
                         color: Color(0xff2F303A),
                         fontWeight: FontWeight.w500,
@@ -42,9 +44,9 @@ class _LoginState extends State<Login> {
                 height: 10,
               ),
               Container(
-                  child: const Text(
+                  child:  Text(
                     'To Get Started Login Now!',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                         fontSize: 15,
                         color: Colors.grey,
                         fontWeight: FontWeight.w600),
@@ -58,8 +60,8 @@ class _LoginState extends State<Login> {
                     fillColor : Color(0xffECF0F5),
                     //border: OutlineInputBorder(borderSide: BorderSide(width: 0,color: Colors.transparent)),
                     border: InputBorder.none,
-
                     labelText: 'Enter your email',
+                      suffixIcon: Icon(CupertinoIcons.person_fill)
                   ),
                 ),
               ),
@@ -75,6 +77,7 @@ class _LoginState extends State<Login> {
                     fillColor : Color(0xffECF0F5),
                     border: InputBorder.none,
                     labelText: 'Enter your password',
+                    suffixIcon: Icon(CupertinoIcons.lock_fill),
                   ),
                 ),
               ),
@@ -98,28 +101,28 @@ class _LoginState extends State<Login> {
                   elevation: 0,
                   color: Color(0xff57559E),
                   child: Padding(
-                    padding: const EdgeInsets.all(15),
+                    padding:  EdgeInsets.all(15),
                     child: Text(
                       "Login",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      style: GoogleFonts.poppins(color: Colors.white, fontSize: 18),
                     ),
                   ),
                 ),
               ),
+              SizedBox(height: 50),
               Row(
                 children: [
-                  Text('New to this?',
-                      style: TextStyle(
+                  Text('New to this? ',
+                      style: GoogleFonts.poppins(
                           fontSize: 16,
                           color: Colors.grey,
-                          fontWeight: FontWeight.w600)),
-                  SizedBox(height: 100),
-                  TextButton(
-                    child: const Text(
+                          fontWeight: FontWeight.w500)),
+                  GestureDetector(
+                    child:  Text(
                       'Create New',
-                      style: TextStyle(fontSize: 16, color: Color(0xff57559E)),
+                      style: GoogleFonts.poppins(fontSize: 16,fontWeight: FontWeight.w700, color: Color(0xff57559E)),
                     ),
-                    onPressed: () {
+                    onTap: () {
                       Navigator.pushNamedAndRemoveUntil(context, SignUp.id, (route) => false);
 
                     },

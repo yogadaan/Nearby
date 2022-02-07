@@ -15,8 +15,6 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-
-
   // var dbref = FirebaseDatabase.instance.reference().child('users');
   // final databaseReference = FirebaseDatabase.instance.reference();
 
@@ -25,35 +23,31 @@ class _SignUpState extends State<SignUp> {
   TextEditingController passwordTextEditingController = TextEditingController();
   TextEditingController numberController = TextEditingController();
   @override
-
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-
 
   void registerNewUser(BuildContext context) async {
     try {
       // final User newUser = (await _firebaseAuth.createUserWithEmailAndPassword(email: emailTextEditingController.text, password: passwordTextEditingController.text)).user;
 
-      final newPerson = await _firebaseAuth.createUserWithEmailAndPassword(email: emailTextEditingController.text, password: passwordTextEditingController.text);
+      final newPerson = await _firebaseAuth.createUserWithEmailAndPassword(
+          email: emailTextEditingController.text,
+          password: passwordTextEditingController.text);
 
       User? newUser = newPerson.user;
 
       if (newUser != null) {
-
         final User newUser = await _firebaseAuth.currentUser!;
         final userId = newUser.uid;
         print(userId);
         displayToastMessage("Account Created!", context);
 
-        Navigator.pushNamedAndRemoveUntil(
-            context, Home.id, (route) => false);
+        Navigator.pushNamedAndRemoveUntil(context, Home.id, (route) => false);
       }
     } catch (e) {
       print(e);
       displayToastMessage(e.toString(), context);
     }
   }
-
-
 
   void displayToastMessage(String message, BuildContext context) {
     Fluttertoast.showToast(
@@ -79,55 +73,61 @@ class _SignUpState extends State<SignUp> {
               Container(child: Image.asset('image/logo.png')),
               SizedBox(height: 40),
               Container(
-                  child: const Text(
-                    'Sign Up.',
-                    style: TextStyle(
-                      //color : Color(0xff57559E),
-                        color: Color(0xff2F303A),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 30),
-                  )),
+                  child: Text(
+                'Sign Up.',
+                style: GoogleFonts.poppins(
+                    //color : Color(0xff57559E),
+                    color: Color(0xff2F303A),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 30),
+              )),
               SizedBox(
                 height: 10,
               ),
               SizedBox(height: 15),
-              Container(decoration: BoxDecoration( borderRadius: BorderRadius.circular(10)),
+              Container(
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
                   controller: nameTextEditingController,
                   decoration: InputDecoration(
                     suffixIcon: Icon(CupertinoIcons.person_fill),
                     filled: true,
-                    fillColor : Color(0xffECF0F5),
+                    fillColor: Color(0xffECF0F5),
                     //border: OutlineInputBorder(borderSide: BorderSide(width: 0,color: Colors.transparent)),
                     border: InputBorder.none,
-                    labelText: 'Enter your name',
+                    labelText: 'Enter your Name',
                   ),
                 ),
               ),
               SizedBox(height: 15),
-              Container(decoration: BoxDecoration( borderRadius: BorderRadius.circular(10)),
+              Container(
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
                   controller: emailTextEditingController,
                   decoration: InputDecoration(
                     suffixIcon: Icon(Icons.mail),
                     filled: true,
-                    fillColor : Color(0xffECF0F5),
+                    fillColor: Color(0xffECF0F5),
                     //border: OutlineInputBorder(borderSide: BorderSide(width: 0,color: Colors.transparent)),
                     border: InputBorder.none,
 
-                    labelText: 'Enter your email',
+                    labelText: 'Enter your Email',
                   ),
                 ),
               ),
-              SizedBox(height:15 ),
-              Container(decoration: BoxDecoration( borderRadius: BorderRadius.circular(10)),
+              SizedBox(height: 15),
+              Container(
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
                   keyboardType: TextInputType.number,
                   controller: numberController,
                   decoration: InputDecoration(
                     suffixIcon: Icon(CupertinoIcons.phone_fill),
                     filled: true,
-                    fillColor : Color(0xffECF0F5),
+                    fillColor: Color(0xffECF0F5),
                     //border: OutlineInputBorder(borderSide: BorderSide(width: 0,color: Colors.transparent)),
                     border: InputBorder.none,
 
@@ -138,16 +138,17 @@ class _SignUpState extends State<SignUp> {
 
               SizedBox(height: 15),
               Container(
-                decoration: BoxDecoration( borderRadius: BorderRadius.circular(10)),
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
                   obscureText: true,
                   controller: passwordTextEditingController,
                   decoration: InputDecoration(
                     suffixIcon: Icon(CupertinoIcons.lock_fill),
                     filled: true,
-                    fillColor : Color(0xffECF0F5),
+                    fillColor: Color(0xffECF0F5),
                     border: InputBorder.none,
-                    labelText: 'Enter your password',
+                    labelText: 'Enter your Password',
                   ),
                 ),
               ),
@@ -172,7 +173,6 @@ class _SignUpState extends State<SignUp> {
                     print(emailTextEditingController);
                     print(passwordTextEditingController);
                     print(numberController);
-
                   },
                   elevation: 0,
                   color: Color(0xff57559E),
@@ -180,37 +180,63 @@ class _SignUpState extends State<SignUp> {
                     padding: const EdgeInsets.all(15),
                     child: Text(
                       "Sign Up",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      style: GoogleFonts.poppins(
+                          color: Colors.white, fontSize: 18),
                     ),
                   ),
                 ),
               ),
-              TextButton(
-                style: ButtonStyle(
-                  overlayColor: MaterialStateProperty.all(Colors.transparent),
-                ),
-                onPressed: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, Login.id, (route) => false);
-                },
-                child: RichText(
-                  text: TextSpan(
-                      text: 'Already have an account?',
-                      style: GoogleFonts.lato(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14,
-                          color: Colors.black),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: ' Login',
-                          style: GoogleFonts.lato(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 14,
-                              color: Colors.black),
-                        ),
-                      ]),
-                ),
+              SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Already have an account? ',
+                    style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey),
+                  ),
+                  GestureDetector(
+                      child: Text('Login',
+                          style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              color: Color(0xff57559E),
+                              fontWeight: FontWeight.w700)),
+                      onTap: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, Login.id, (route) => false);
+                      })
+                ],
               )
+              // TextButton(
+              //   style: ButtonStyle(
+              //     overlayColor: MaterialStateProperty.all(Colors.transparent),
+              //   ),
+              //   onPressed: () {
+              //     Navigator.pushNamedAndRemoveUntil(
+              //         context, Login.id, (route) => false);
+              //   },
+              //   child: Center(
+              //     child: RichText(
+              //       text: TextSpan(
+              //           text: 'Already have an account?',
+              //           style: GoogleFonts.poppins(
+              //               fontWeight: FontWeight.w500,
+              //               fontSize: 14,
+              //               color: Colors.black),
+              //           children: <TextSpan>[
+              //             TextSpan(
+              //               text: ' Login',
+              //               style: GoogleFonts.poppins(
+              //                   fontWeight: FontWeight.w700,
+              //                   fontSize: 14,
+              //                   color: Colors.black),
+              //             ),
+              //           ]),
+              //     ),
+              //   ),
+              // )
             ],
           )),
     );
