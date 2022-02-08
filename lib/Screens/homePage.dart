@@ -11,19 +11,22 @@ class Home extends StatelessWidget {
     return Scaffold(
         body: Padding(
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+
     child: Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [SizedBox(height: 55),
+
     Row(
-    children: [Text('Find Spot\nPhotos', style: GoogleFonts.poppins(
+    children:
+    [Text('Find Spot\nPhotos', style: GoogleFonts.poppins(
     color: Color(0xff2F303A),fontWeight: FontWeight.w600,
     fontSize: 30),
     ),
     SizedBox(width: 100,),
     Container(child: Image.asset('image/logo.png')),
     ],
-
     ),
+
     SizedBox(height: 30),
     Container(decoration: BoxDecoration( borderRadius: BorderRadius.circular(10)),
     child: TextFormField(
@@ -33,12 +36,14 @@ class Home extends StatelessWidget {
     fillColor: Color(0xffECF0F5),
     border: InputBorder.none,
     labelText: ('Search Cases Around...'),
-    prefixIcon:Icon(CupertinoIcons.search,color: Color(0xff2F303A)
-    )
+    prefixIcon:Icon(CupertinoIcons.search)
     ),
-    ],
+
     ),
-    )
-    );
+
+    ),
+
+    ]
+    )));
   }
 }
