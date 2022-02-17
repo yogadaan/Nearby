@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:nearby/Screens/homePage.dart';
 import 'Screens/Signup_Page.dart';
 import 'Screens/login_Page.dart';
-import 'Screens/sign_up.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
