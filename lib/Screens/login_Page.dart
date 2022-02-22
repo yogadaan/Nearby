@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nearby/Screens/Signup_Page.dart';
-
+import 'package:http/http.dart' as http;
 import 'homePage.dart';
 
 class Login extends StatefulWidget {
@@ -72,7 +72,6 @@ class _LoginState extends State<Login> {
                   obscureText: true,
                   controller: passwordController,
                   decoration: InputDecoration(
-
                     filled: true,
                     fillColor : Color(0xffECF0F5),
                     border: InputBorder.none,
@@ -96,7 +95,9 @@ class _LoginState extends State<Login> {
                       if(user!= null){
                         Navigator.pushNamedAndRemoveUntil(context, Home.id, (route) => false);
                         print('check check');}
-                    }catch (e){print(e);}
+                    }catch (e){
+                      print(e);
+                    }
                   },
                   elevation: 0,
                   color: Color(0xff57559E),
@@ -142,55 +143,4 @@ class _LoginState extends State<Login> {
 }
 
 
-// class Login extends StatefulWidget {
-//    Login({Key? key}) : super(key: key);
-//   @override
-//   _LoginState createState() => _LoginState();
-// }
-//
-// class _LoginState extends State<Login> {
-//
-//    final emailController = TextEditingController();
-//    final passwordController = TextEditingController();
-//   @override
-//   void dispose(){
-//     emailController.dispose();
-//     passwordController.dispose();
-//
-//     super.dispose();
-//   }
-//   Widget build(BuildContext context)  => SingleChildScrollView(
-//     padding: EdgeInsets.all(16),
-//     child: Material(
-//       child: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           SizedBox(height: 40,),
-//           TextField(
-//             controller: emailController,
-//             cursorColor:Colors.white,
-//             textInputAction: TextInputAction.next,
-//             decoration: InputDecoration(labelText: 'Enter Email'),
-//
-//           ),
-//           TextField(
-//             controller: passwordController,
-//             cursorColor:Colors.white,
-//             textInputAction: TextInputAction.next,
-//             decoration: InputDecoration(labelText: 'Enter Password'),
-//           ),
-//           SizedBox(
-//             height: 20,
-//           ),
-//           ElevatedButton(onPressed: signIn, child: Text('Signin'),
-//           )
-//         ],
-//       ),
-//     ),
-//   );
-//    Future signIn() async {
-//      await FirebaseAuth.instance.signInWithEmailAndPassword(
-//          email: emailController.text.trim() , password: passwordController.text.trim());
-//    }
-// }
 

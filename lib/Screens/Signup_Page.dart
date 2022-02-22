@@ -1,4 +1,5 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,6 +7,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'homePage.dart';
 import 'login_Page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
+
 
 class SignUp extends StatefulWidget {
   static String id = 'registration_screen';
@@ -14,9 +17,69 @@ class SignUp extends StatefulWidget {
   _SignUpState createState() => _SignUpState();
 }
 
+Future createUser(String email, String uid, String username, String number)async{
+  String data = '{"uUID" :"${uid}","userName" : "${username}","phoneNumber" : "${number}","userEmail" : "${email}"}';
+  Map <String, String> headers={
+    'Content-Type': 'application/json; charset=UTF-8',
+  };
+  // data=json.encode(data) ;
+  final response= await http.post(
+    Uri.parse('http://13.232.99.59:3000/yogdaan/createUser'),body: data,headers: headers);
+
+  if (response.statusCode == 200) {
+    return jsonDecode(response.body);
+
+  } else {
+    // If the server did not return a 201 CREATED response,
+    // then throw an exception.
+    throw Exception('Failed to create User.');
+  }
+}
+
+Future sendMail(String email)async{
+  String data = '{"userEmail":"$email"}';
+  Map <String, String> headers={
+    'Content-Type': 'application/json; charset=UTF-8',
+  };
+  final response= await http.post(
+      Uri.parse('http://13.232.99.59:3000/yogdaan/welcomeMail'),body: data,headers: headers);
+
+  if (response.statusCode == 200) {
+    return jsonDecode(response.body);
+
+  } else {
+    // If the server did not return a 201 CREATED response,
+    // then throw an exception.
+    throw Exception('Failed to create User.');
+  }
+}
+
+String userID= "";
+// class NewUser{
+//   late final String email;
+//   late final String uid;
+//   late final String username;
+//   late final String number;
+//   NewUser({required this.email,required this.uid, required this.number, required this.username});
+//   factory NewUser.fromJson(Map<String,String> json){
+//     return NewUser(
+//         username: json['username'],
+//       email: json['userEmail'],
+//       number: json['phoneNumber'],
+//         uid: json['uUID']
+//
+//     );
+//   }
+//
+// }
+
 class _SignUpState extends State<SignUp> {
-  // var dbref = FirebaseDatabase.instance.reference().child('users');
-  // final databaseReference = FirebaseDatabase.instance.reference();
+  String? currentUser() {
+    final User? user = FirebaseAuth.instance.currentUser;
+    final uid = user?.uid.toString();
+    userID = uid!;
+    return uid;
+  }
 
   TextEditingController nameTextEditingController = TextEditingController();
   TextEditingController emailTextEditingController = TextEditingController();
@@ -49,6 +112,8 @@ class _SignUpState extends State<SignUp> {
     }
   }
 
+
+
   void displayToastMessage(String message, BuildContext context) {
     Fluttertoast.showToast(
         msg: message,
@@ -56,6 +121,8 @@ class _SignUpState extends State<SignUp> {
         textColor: Colors.white,
         fontSize: 7);
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -169,10 +236,9 @@ class _SignUpState extends State<SignUp> {
                           "Password should be more than 6 Characters", context);
                     }
                     registerNewUser(context);
-                    print(nameTextEditingController);
-                    print(emailTextEditingController);
-                    print(passwordTextEditingController);
-                    print(numberController);
+                    currentUser();
+                    createUser(emailTextEditingController.text, userID, nameTextEditingController.text, numberController.text);
+                    sendMail(emailTextEditingController.text);
                   },
                   elevation: 0,
                   color: Color(0xff57559E),
@@ -209,34 +275,6 @@ class _SignUpState extends State<SignUp> {
                       })
                 ],
               )
-              // TextButton(
-              //   style: ButtonStyle(
-              //     overlayColor: MaterialStateProperty.all(Colors.transparent),
-              //   ),
-              //   onPressed: () {
-              //     Navigator.pushNamedAndRemoveUntil(
-              //         context, Login.id, (route) => false);
-              //   },
-              //   child: Center(
-              //     child: RichText(
-              //       text: TextSpan(
-              //           text: 'Already have an account?',
-              //           style: GoogleFonts.poppins(
-              //               fontWeight: FontWeight.w500,
-              //               fontSize: 14,
-              //               color: Colors.black),
-              //           children: <TextSpan>[
-              //             TextSpan(
-              //               text: ' Login',
-              //               style: GoogleFonts.poppins(
-              //                   fontWeight: FontWeight.w700,
-              //                   fontSize: 14,
-              //                   color: Colors.black),
-              //             ),
-              //           ]),
-              //     ),
-              //   ),
-              // )
             ],
           )),
     );
