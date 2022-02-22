@@ -55,23 +55,6 @@ Future sendMail(String email)async{
 }
 
 String userID= "";
-// class NewUser{
-//   late final String email;
-//   late final String uid;
-//   late final String username;
-//   late final String number;
-//   NewUser({required this.email,required this.uid, required this.number, required this.username});
-//   factory NewUser.fromJson(Map<String,String> json){
-//     return NewUser(
-//         username: json['username'],
-//       email: json['userEmail'],
-//       number: json['phoneNumber'],
-//         uid: json['uUID']
-//
-//     );
-//   }
-//
-// }
 
 class _SignUpState extends State<SignUp> {
   String? currentUser() {
