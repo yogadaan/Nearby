@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nearby/Screens/login_Page.dart';
+import 'package:nearby/Screens/profilePage.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -120,7 +121,7 @@ class _HomeState extends State<Home> {
     HomePage(),
     Login(),
     Login(),
-    HomePage(),
+    ProfilePage(),
   ];
   void onTabTapped(int index) {
     setState(() {

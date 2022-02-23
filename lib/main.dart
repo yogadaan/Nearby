@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:nearby/Screens/homePage.dart';
+import 'package:nearby/Screens/profilePage.dart';
 import 'Screens/Signup_Page.dart';
 import 'Screens/login_Page.dart';
 void main() async {
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         Login.id:(context) => Login(),
         Home.id:(context)=> Home(),
         SignUp.id:(context)=>SignUp(),
+        ProfilePage.id:(context)=>ProfilePage(),
       },
     );
   }
