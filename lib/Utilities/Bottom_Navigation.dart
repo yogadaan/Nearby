@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nearby/Screens/profilePage.dart';
 import '../Screens/homePage.dart';
-import '../Screens/login_Page.dart';
+import '../Screens/Login_Page.dart';
 
 class BottomNavigation extends State<Home> {
   int _currentIndex = 0;

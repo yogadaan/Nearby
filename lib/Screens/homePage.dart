@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nearby/Screens/login_Page.dart';
+import 'package:nearby/Screens/Login_Page.dart';
 import 'package:nearby/Screens/profilePage.dart';
 
 import '../Utilities/Bottom_Navigation.dart';
