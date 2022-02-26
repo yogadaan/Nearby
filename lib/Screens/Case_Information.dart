@@ -121,12 +121,15 @@ class _Case_InformationState extends State<Case_Information> {
                 ),
               ),
             ),
-            MaterialButton(onPressed: (){},
-              minWidth: MediaQuery.of(context).size.width*0.65,
-              height: MediaQuery.of(context).size.height*0.055,
-              shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(22.0) ),
-              child: Text('Next'),
-              color: Colors.red,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: MaterialButton(onPressed: (){},
+                minWidth: MediaQuery.of(context).size.width*0.82,
+                height: MediaQuery.of(context).size.height*0.055,
+                shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(22.0) ),
+                child: Text('Next'),
+                  color: Color(0xff57559E)
+              ),
             )
           ],
         ),
