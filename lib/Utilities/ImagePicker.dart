@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:nearby/Screens/Case_Information.dart';
 
 class CameraWidget extends StatefulWidget {
   @override
@@ -12,6 +14,7 @@ class CameraWidget extends StatefulWidget {
 
 class CameraWidgetState extends State<CameraWidget> {
   PickedFile? imageFile = null;
+
   Future<void> _showChoiceDialog(BuildContext context) {
     return showDialog(
         context: context,
@@ -19,14 +22,14 @@ class CameraWidgetState extends State<CameraWidget> {
           return AlertDialog(
             title: Text(
               "Choose option",
-              style: TextStyle(color: Colors.blue),
+              style: TextStyle(color: Color(0xff5A559F)),
             ),
             content: SingleChildScrollView(
               child: ListBody(
                 children: [
                   Divider(
                     height: 1,
-                    color: Colors.blue,
+                    color: Color(0xff5A559F),
                   ),
                   ListTile(
                     onTap: () {
@@ -35,12 +38,12 @@ class CameraWidgetState extends State<CameraWidget> {
                     title: Text("Gallery"),
                     leading: Icon(
                       Icons.account_box,
-                      color: Colors.blue,
+                      color: Color(0xff5A559F),
                     ),
                   ),
                   Divider(
                     height: 1,
-                    color: Colors.blue,
+                    color: Color(0xff5A559F),
                   ),
                   ListTile(
                     onTap: () {
@@ -49,7 +52,7 @@ class CameraWidgetState extends State<CameraWidget> {
                     title: Text("Camera"),
                     leading: Icon(
                       Icons.camera,
-                      color: Colors.blue,
+                      color: Color(0xff5A559F),
                     ),
                   ),
                 ],
@@ -73,20 +76,43 @@ class CameraWidgetState extends State<CameraWidget> {
                 color: Colors.transparent,
                 child: (imageFile == null)
                     ? Container(
+                        width: MediaQuery.of(context).size.width,
+                        child: Center(
+                          child: Text("Add images of the Incedent"),
+                        )
+                )
+                    : Container(
                     width: MediaQuery.of(context).size.width,
-                    child: Center(
-                      child: Text("Add images of the incedent"),
-                    ))
-                    : Image.file(File(imageFile!.path)),
+                    height: MediaQuery.of(context).size.height*0.5,
+                    child: Image.file(File(imageFile!.path))),
+              ),
+              MaterialButton(
+                onPressed: () {
+                  _showChoiceDialog(context);
+                },
+
+                child: Container(
+                  color: Colors.grey.shade200,
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  width: MediaQuery.of(context).size.height * 0.25,
+                  child: Icon(
+                    Icons.attach_file_outlined,
+                    size: 35,
+                  ),
+                ),
               ),
               MaterialButton(
                 textColor: Colors.white,
                 color: Color(0xff5A559F),
                 onPressed: () {
-                  _showChoiceDialog(context);
+                  if(imageFile !=null){
+                    Navigator.pushNamed(context, 'CaseInfo');
+                  }else{
+                    displayToastMessage('Add image first', context);
+                  }
                 },
-                child: Text("Select Image"),
-              )
+                child: Text("Add Image"),
+              ),
             ],
           ),
         ),
@@ -113,5 +139,12 @@ class CameraWidgetState extends State<CameraWidget> {
       imageFile = pickedFile!;
     });
     Navigator.pop(context);
+  }
+  void displayToastMessage(String message, BuildContext context) {
+    Fluttertoast.showToast(
+        msg: message,
+        backgroundColor: Colors.grey.withOpacity(0.8),
+        textColor: Colors.white,
+        fontSize: 15);
   }
 }

@@ -14,6 +14,10 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  signOut() async {
+    await _firebaseAuth.signOut();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,7 +108,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         color: Colors.teal[300]),
                     child: Center(
                       child: Text(
-                        '24\nCases Solved',
+                        '12\nCases Solved',
                         style:
                         TextStyle(color: Colors.white, fontSize: 20, height: 4,fontWeight: FontWeight.w700),
                       ),
@@ -123,7 +127,10 @@ class _ProfilePageState extends State<ProfilePage> {
 
             SizedBox(height: 10,),
             Center(
-              child: MaterialButton(onPressed: () {  },color: Colors.grey[300],
+              child: MaterialButton(onPressed: () {
+                signOut();
+                Navigator.pushNamedAndRemoveUntil(context, 'registration_screen', (route) => false);
+              },color: Colors.grey[300],
                 child: Text('Sign Out',style: GoogleFonts.poppins(
                     color: Colors.black,fontWeight: FontWeight.w600
                 ),),),
