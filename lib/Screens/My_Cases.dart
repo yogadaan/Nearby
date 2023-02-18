@@ -31,7 +31,7 @@ class _MyCasesState extends State<MyCases> {
                     style: GoogleFonts.poppins(
                         color: Color(0xff2F303A),
                         fontWeight: FontWeight.w600,
-                        fontSize: 30),
+                        fontSize: 29),
                   ),
                 ],
               ),
