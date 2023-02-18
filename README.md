@@ -1,4 +1,4 @@
-# nearby
+# Nearby
 
 A Flutter App
 
