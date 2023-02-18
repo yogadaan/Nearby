@@ -1,6 +1,6 @@
 # nearby
 
-A new Flutter project.
+A Flutter App
 
 ## Getting Started
 
